@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Your Profile</h1>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>{{ patient['name'] }}</td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td>{{ patient['age'] }}</td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td>{{ patient['gender'] }}</td>
+        </tr>
+        <tr>
+            <td>Blood Group:</td>
+            <td>{{ patient['blood_group'] }}</td>
+        </tr>
+        <tr>
+            <td>Health Condition:</td>
+            <td>{{ patient['health_condition'] }}</td>
+        </tr>
+    </table>
+
+    <h2>QR Code</h2>
+    <img src="{{ qr_img_path }}" alt="QR Code">
+
+    <h2>Edit Details</h2>
+    <form action="/profile" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" value="{{ patient['name'] }}" required>
+        
+        <label for="age">Age</label>
+        <input type="number" name="age" value="{{ patient['age'] }}" required>
+        
+        <label for="gender">Gender</label>
+        <select name="gender" required>
+            <option value="Male" {% if patient['gender'] == 'Male' %}selected{% endif %}>Male</option>
+            <option value="Female" {% if patient['gender'] == 'Female' %}selected{% endif %}>Female</option>
+        </select>
+        
+        <label for="blood_group">Blood Group</label>
+        <select name="blood_group" required>
+            <option value="A+" {% if patient['blood_group'] == 'A+' %}selected{% endif %}>A+</option>
+            <option value="A-" {% if patient['blood_group'] == 'A-' %}selected{% endif %}>A-</option>
+            <option value="B+" {% if patient['blood_group'] == 'B+' %}selected{% endif %}>B+</option>
+            <option value="B-" {% if patient['blood_group'] == 'B-' %}selected{% endif %}>B-</option>
+            <option value="O+" {% if patient['blood_group'] == 'O+' %}selected{% endif %}>O+</option>
+            <option value="O-" {% if patient['blood_group'] == 'O-' %}selected{% endif %}>O-</option>
+            <option value="AB+" {% if patient['blood_group'] == 'AB+' %}selected{% endif %}>AB+</option>
+            <option value="AB-" {% if patient['blood_group'] == 'AB-' %}selected{% endif %}>AB-</option>
+        </select>
+        
+        <label for="health_condition">Health Condition</label>
+        <input type="text" name="health_condition" value="{{ patient['health_condition'] }}" required>
+        
+        <button type="submit">Update Details</button>
+    </form>
+</body>
+</html>

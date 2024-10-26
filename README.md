@@ -10,8 +10,8 @@ and the QR code can be downloaded for sharing.
 3. [Setup MySQL Database](#setup-mysql-database)
 4. [Running the Application](#running-the-application)
 5. [Usage](#usage)
-6. [License](#license)
 
+NOTE: the html and css of the code are very basic. While using it customize to your own intrest
 ## Prerequisites
 
 - Python 3.x
